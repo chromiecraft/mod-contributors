@@ -71,7 +71,7 @@ public:
         if (data.Permanent)
         {
             player->SetRestBonus(sObjectMgr->GetXPForLevel(player->GetLevel()));
-            ChatHandler(player->GetSession()).PSendSysMessage("|cff00ccffThank you for contributing! You have been granted rested experience. (Permanent)|r");
+            ChatHandler(player->GetSession()).PSendSysMessage("|cff00ccffThank you for contributing! [{} Contributor] You have been granted rested experience. (Permanent)|r", ContributorsMgr::GetLevelName(data.Level));
             return true;
         }
 
@@ -81,7 +81,7 @@ public:
         {
             player->SetRestBonus(sObjectMgr->GetXPForLevel(player->GetLevel()));
             tm endTime = Acore::Time::TimeBreakdown(data.EndDate);
-            ChatHandler(player->GetSession()).PSendSysMessage("|cff00ccffThank you for contributing! You have been granted rested experience until {:%Y-%m-%d %H:%M}.|r", endTime);
+            ChatHandler(player->GetSession()).PSendSysMessage("|cff00ccffThank you for contributing! [{} Contributor] You have been granted rested experience until {:%Y-%m-%d %H:%M}.|r", ContributorsMgr::GetLevelName(data.Level), endTime);
             return true;
         }
 
