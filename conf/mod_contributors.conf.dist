@@ -1,0 +1,37 @@
+#
+# Copyright (C) 2016+ AzerothCore <www.azerothcore.org>,
+# released under GNU AGPL v3 license:
+# https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3
+#
+
+[worldserver]
+
+########################################
+# mod-contributors
+########################################
+#
+#    ModContributors.Enable
+#        Description: Enable the contributors rested XP module.
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+ModContributors.Enable = 0
+
+#
+#    ModContributors.Duration
+#        Description: How many days the rested XP bonus lasts
+#                     after being granted contributor status.
+#        Default:     30 (days)
+#
+
+ModContributors.Duration = 30
+
+#
+#    ModContributors.MaxAffectedLevel
+#        Description: Max affected level. No bonuses will be
+#                     granted at or past this level.
+#        Default:     69
+#
+
+ModContributors.MaxAffectedLevel = 69
