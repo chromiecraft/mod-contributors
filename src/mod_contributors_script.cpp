@@ -12,6 +12,19 @@
 #include "Player.h"
 #include "ScriptMgr.h"
 
+namespace
+{
+constexpr uint32 SPELL_HARDCORE_CHALLENGER = 2000100;
+constexpr uint32 SPELL_IRONMAN_CHALLENGER = 2000101;
+constexpr uint32 SPELL_BLOODTHIRSTY_CHALLENGER = 2000102;
+
+bool IsChallengeCharacter(Player const* player)
+{
+    return player && player->GetLevel() < 70
+        && player->HasAnyAuras(SPELL_HARDCORE_CHALLENGER, SPELL_IRONMAN_CHALLENGER, SPELL_BLOODTHIRSTY_CHALLENGER);
+}
+}
+
 class mod_contributors_playerscript : public PlayerScript
 {
 public:
@@ -53,6 +66,9 @@ public:
         uint32 accountId = player->GetSession()->GetAccountId();
 
         if (!sContributors->IsContributor(accountId))
+            return false;
+
+        if (IsChallengeCharacter(player))
             return false;
 
         ContributorAccountData const& data = sContributors->GetAccountData(accountId);
